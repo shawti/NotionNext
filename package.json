@@ -18,7 +18,11 @@
     "start": "next start",
     "post-build": "next-sitemap --config next-sitemap.config.js",
     "export": "next build && next-sitemap --config next-sitemap.config.js && next export",
-    "bundle-report": "ANALYZE=true yarn build"
+    "bundle-report": "ANALYZE=true yarn build",
+    "deploy": "yarn build && pm2 startOrRestart pm2.config.js --env prod",
+    "deploy:test": "yarn build:dev && pm2 startOrRestart pm2.config.js --env dev",
+    "serve": "pm2 startOrRestart pm2.config.js --env prod",
+    "serve:test": "pm2 startOrRestart pm2.config.js --env dev"
   },
   "dependencies": {
     "@giscus/react": "^2.2.6",
