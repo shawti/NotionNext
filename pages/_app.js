@@ -22,13 +22,14 @@ const MyApp = ({ Component, pageProps }) => {
   if (isBrowser) {
     // 初始化AOS动画
     AOS.init()
+    const basePath = process.env.NEXT_PUBLIC_BATH_PATH || ''
     // 静态导入本地自定义样式
-    loadExternalResource('/css/custom.css', 'css')
-    loadExternalResource('/js/custom.js', 'js')
+    loadExternalResource(basePath + '/css/custom.css', 'css')
+    loadExternalResource(basePath + '/js/custom.js', 'js')
 
     // 自动添加图片阴影
     if (BLOG.IMG_SHADOW) {
-      loadExternalResource('/css/img-shadow.css', 'css')
+      loadExternalResource(basePath + '/css/img-shadow.css', 'css')
     }
 
     // 导入外部自定义脚本

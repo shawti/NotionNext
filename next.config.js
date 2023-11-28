@@ -29,6 +29,7 @@ function scanSubdirectories(directory) {
 // 扫描项目 /themes下的目录名
 const themes = scanSubdirectories(path.resolve(__dirname, 'themes'))
 module.exports = withBundleAnalyzer({
+  basePath: process.env.NEXT_PUBLIC_BATH_PATH || '',
   images: {
     // 图片压缩
     formats: ['image/avif', 'image/webp'],
@@ -106,7 +107,7 @@ module.exports = withBundleAnalyzer({
   },
   publicRuntimeConfig: { // 这里的配置既可以服务端获取到，也可以在浏览器端获取到
     NODE_ENV_API: process.env.NODE_ENV_API || 'prod',
-    THEMES: themes
-  },
-  basePath: process.env.BASE_PATH || ''
+    THEMES: themes,
+    BASE_PATH: process.env.NEXT_PUBLIC_BATH_PATH || ''
+  }
 })

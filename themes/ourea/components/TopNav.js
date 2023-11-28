@@ -1,10 +1,11 @@
 import { useGlobal } from '@/lib/global'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 import Logo from './Logo'
-import SideBarDrawer from '@/components/SideBarDrawer'
-import SideBar from './SideBar'
+// import SideBarDrawer from '@/components/SideBarDrawer'
+// import SideBar from './SideBar'
 import throttle from 'lodash.throttle'
 import Link from 'next/link'
+
 /**
  * 顶部导航
  * @returns
@@ -53,15 +54,15 @@ const TopNav = props => {
     }
   }, [])
 
-  const [isOpen, changeShow] = useState(false)
+  // const [isOpen, changeShow] = useState(false)
 
-  const toggleMenuOpen = () => {
-    changeShow(!isOpen)
-  }
-
-  const toggleMenuClose = () => {
-    changeShow(false)
-  }
+  // const toggleMenuOpen = () => {
+  //   changeShow(!isOpen)
+  // }
+  //
+  // const toggleMenuClose = () => {
+  //   changeShow(false)
+  // }
 
   return (
           <div id='sticky-nav' className={'flex justify-center top-0 sticky text-gray-200 w-full z-30 transform transition-all duration-200 bg-white'}>

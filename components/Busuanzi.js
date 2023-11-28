@@ -9,17 +9,17 @@ let path = ''
 export default function Busuanzi () {
   const { theme } = useGlobal()
   const Router = useRouter()
-  Router.events.on('routeChangeComplete', (url, option) => {
+  Router.events.on('routeChangeComplete', async (url, option) => {
     if (url !== path) {
       path = url
-      busuanzi.fetch()
+      await busuanzi.fetch()
     }
   })
 
   // 更换主题时更新
-  React.useEffect(() => {
+  React.useEffect(async () => {
     if (theme) {
-      busuanzi.fetch()
+      await busuanzi.fetch()
     }
   }, [theme])
   return null

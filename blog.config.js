@@ -49,7 +49,7 @@ const BLOG = {
   FONT_URL: [
     // 'https://npm.elemecdn.com/lxgw-wenkai-webfont@1.6.0/style.css',
     'https://fonts.googleapis.com/css?family=Poppins&display=swap',
-    'https://fonts.googleapis.com/css?family=Michroma&display=swap',
+    'https://fonts.googleapis.com/css2?family=Michroma&display=swap',
     'https://fonts.googleapis.com/css?family=Bitter&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300&display=swap',
     'https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300&display=swap'

@@ -1,4 +1,7 @@
 import Logo from './Logo'
+import logoIn from '@/public/images/ourea/logo-in.png';
+import logoM from '@/public/images/ourea/logo-m.png';
+import logoX from '@/public/images/ourea/logo-x.png';
 import LazyImage from '@/components/LazyImage'
 const Footer = ({ title }) => {
   const data = [
@@ -111,7 +114,7 @@ const Footer = ({ title }) => {
               <div className='flex justify-between items-center'>
                 <div className='relative w-[20px] h-[20px]'>
                   <a href='https://twitter.com/OureaAI'>
-                    <LazyImage src='/images/ourea/logo-x.png' alt='img for Find us' />
+                    <LazyImage src={logoX.src} alt='img for Find us' />
                   </a>
                 </div>
               </div>
@@ -124,7 +127,7 @@ const Footer = ({ title }) => {
               <div>
                 <div className='relative w-[20px] h-[15px]'>
                   <a href='mailto:customers@ourea.art'>
-                    <LazyImage src='/images/ourea/logo-m.png' alt='img for Email us' />
+                    <LazyImage src={logoM.src} alt='img for Email us' />
                   </a>
                 </div>
               </div>
@@ -140,7 +143,7 @@ const Footer = ({ title }) => {
                     href='https://www.linkedin.com/in/lei-wu-12803b229/'
                     target='_blank' rel="noreferrer"
                   >
-                    <LazyImage src='/images/ourea/logo-in.png' alt='img for Chat with CEO' />
+                    <LazyImage src={logoIn.src} alt='img for Chat with CEO' />
                   </a>
                 </div>
               </div>
