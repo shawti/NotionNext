@@ -1,6 +1,8 @@
 import { siteConfig } from '@/lib/config'
 import Head from 'next/head'
 import React, { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 /**
  * 图片懒加载
@@ -89,10 +91,10 @@ export default function LazyImage({
   }
   return (<>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img {...imgProps} />
+        <Image {...imgProps} />
         {/* 预加载 */}
         {priority && <Head>
-            <link rel='preload' as='image' src={src} />
+          <Link rel='preload' as='image' src={src} href={src} target='_blank'/>
         </Head>}
     </>)
 }
