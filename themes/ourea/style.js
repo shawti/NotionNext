@@ -31,11 +31,11 @@ const Style = () => {
       box-shadow: 16px 0 34px rgba(206,203,255,.1);
     }
 
-    //@font-face {
-    //  font-family:'Michroma-Regular';
-    //  src:url('/blog/Michroma-Regular.ttf');
-    //  font-display: swap;
-    //}
+    @font-face {
+      font-family:'Michroma-Regular';
+      src:url('/blog/Michroma-Regular.ttf');
+      font-display: swap;
+    }
     //@import url('https://fonts.cdnfonts.com/css/michroma-2');
     
   `}</style>

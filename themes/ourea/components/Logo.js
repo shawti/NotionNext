@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import LazyImage from '@/components/LazyImage'
-import logo from '@/public/images/ourea/logo.svg'
+import logo from '@/public/images/ourea/logo.png'
 
 const Logo = props => {
   return (
