@@ -39,7 +39,9 @@ import { siteConfig } from '@/lib/config'
 const LayoutBase = props => {
   const { children, headerSlot, meta, siteInfo } = props
   const { onLoading } = useGlobal()
-
+  meta.title = meta?.title || siteConfig('TITLE')
+  meta.description = meta?.description || siteConfig('DESCRIPTION')
+  meta.keywords = meta?.keywords || siteConfig('KEYWORDS')
   return (
         <div id='theme-ourea' className="min-h-screen flex flex-col justify-between bg-white dark:bg-black w-full">
             {/* SEO相关 */}
@@ -93,6 +95,8 @@ const LayoutBase = props => {
  * @returns
  */
 const LayoutIndex = (props) => {
+  const { meta } = props
+  meta.title = siteConfig('TITLE') + ' - ' + siteConfig('BIO')
   return <LayoutPostList {...props} containerSlot={<Announcement {...props} />} headerSlot={siteConfig('OUREA_HOME_BANNER_ENABLE', null, CONFIG) && <Hero {...props} />} />
 }
 
@@ -102,6 +106,25 @@ const LayoutIndex = (props) => {
  * @returns
  */
 const LayoutPostList = (props) => {
+  const { meta } = props
+  const router = useRouter()
+  switch (router.pathname) {
+    case '/category/[category]':
+    case '/category/[category]/page/[page]':
+      meta.title = `${props.category} | ${siteConfig('TITLE')}`
+      meta.keywords = `${props.category},${siteConfig('KEYWORDS')}`
+      meta.description = `${props.category}, OUERA Blog carries on organizing content about ${props.category}, welcome to visit to learn more about the specifics of ${props.category}, I hope it can help you.`
+      break
+    case '/tag/[tag]':
+    case '/tag/[tag]/page/[page]':
+      meta.title = `${props.tag} | ${siteConfig('TITLE')}`
+      meta.keywords = `${props.tag},${siteConfig('KEYWORDS')}`
+      meta.description = `${props.tag}, OUERA Blog carries on organizing content about ${props.tag}, welcome to visit to learn more about the specifics of ${props.tag}, I hope it can help you.`
+      break
+    default:
+      // pass
+      break
+  }
   return (
         <LayoutBase {...props} containerSlot={<BlogListBar {...props} />}>
             {siteConfig('POST_LIST_STYLE') === 'page' ? <BlogPostListPage {...props} /> : <BlogPostListScroll {...props} />}
@@ -115,9 +138,13 @@ const LayoutPostList = (props) => {
  * @returns
  */
 const LayoutSearch = props => {
-  const { keyword } = props
+  const { keyword, meta } = props
   const router = useRouter()
   const currentSearch = keyword || router?.query?.s
+
+  meta.title = `${keyword} | ${siteConfig('TITLE')}`
+  meta.keywords = `${keyword},${siteConfig('KEYWORDS')}`
+  meta.description = `${keyword}, OUERA Blog carries on organizing content about ${keyword}, welcome to visit to learn more about the specifics of ${keyword}, I hope it can help you.`
 
   useEffect(() => {
     if (currentSearch) {
@@ -170,7 +197,10 @@ const LayoutArchive = (props) => {
  * @returns
  */
 const LayoutSlug = props => {
-  const { post, lock, validPassword } = props
+  const { post, lock, meta, validPassword } = props
+  meta.title = post?.title + ' | ' + siteConfig('TITLE')
+  meta.description = post?.summary
+  meta.keywords = post?.title + ',' + siteConfig('KEYWORDS')
 
   return (<LayoutBase {...props} headerSlot={<PostHeader {...props} />} showCategory={false} showTag={false} floatRightBottom={<JumpToCommentButton />}>
 
@@ -202,7 +232,7 @@ const LayoutSlug = props => {
                 {/* 底部文章推荐 */}
                 {post?.type === 'Post' && <ArticleAdjacent {...props} />}
                 {/* 底部公告 */}
-                <Announcement {...props} />
+                {/* <Announcement {...props} /> */}
             </div>
         </div>
 
@@ -216,6 +246,8 @@ const LayoutSlug = props => {
  * @returns
  */
 const Layout404 = props => {
+  const { meta } = props
+  meta.title = '404 |' + siteConfig('TITLE')
   const router = useRouter()
   useEffect(() => {
     // 延时3秒如果加载失败就返回首页
@@ -250,7 +282,10 @@ const Layout404 = props => {
  * @returns
  */
 const LayoutCategoryIndex = props => {
-  const { categoryOptions } = props
+  const { categoryOptions, meta } = props
+  const keywords = []
+  categoryOptions?.forEach(e => { keywords.push(e.name) })
+  meta.keywords = keywords.length > 0 ? keywords.join(',') + ',' + siteConfig('KEYWORDS') : ''
 
   return (
         <LayoutBase {...props} headerSlot={<PostHeader {...props} />} >
@@ -280,8 +315,12 @@ const LayoutCategoryIndex = props => {
  * @returns
  */
 const LayoutTagIndex = props => {
-  const { tagOptions } = props
+  const { tagOptions, meta } = props
   const { locale } = useGlobal()
+
+  const keywords = []
+  tagOptions?.forEach(e => { keywords.push(e.name) })
+  meta.keywords = keywords.length > 0 ? keywords.join(',') + ',' + siteConfig('KEYWORDS') : ''
   return (
         <LayoutBase {...props} headerSlot={<PostHeader {...props} />} >
             <div id='inner-wrapper' className='w-full drop-shadow-xl'>
