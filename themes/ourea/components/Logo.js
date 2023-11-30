@@ -6,7 +6,7 @@ const Logo = props => {
   return (
     <Link href='https://ourea.art' passHref legacyBehavior>
       <div className='flex flex-col justify-center items-center cursor-pointer'>
-        <div className=' text-lg hover:scale-110 transform duration-200'>
+        <div className='relative text-lg hover:scale-110 transform duration-200'>
           <LazyImage src={logo.src} className='h-8'/>
         </div>
       </div>

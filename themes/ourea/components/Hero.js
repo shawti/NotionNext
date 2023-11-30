@@ -16,11 +16,11 @@ const Hero = props => {
   const [typed, changeType] = useState()
   const { siteInfo } = props
   const { locale } = useGlobal()
-  const GREETING_WORDS = siteConfig('GREETING_WORDS').split(',')
+  const GREETING_WORDS = siteConfig('GREETING_WORDS') ? siteConfig('GREETING_WORDS').split(',') : []
 
   useEffect(() => {
     updateHeaderHeight()
-    if (!typed && window && document.getElementById('typed')) {
+    if (!typed && window && document.getElementById('typed') && GREETING_WORDS.length > 0) {
       changeType(
         new Typed('#typed', {
           strings: GREETING_WORDS,
