@@ -10,9 +10,9 @@ export default function PostHeader({ post, siteInfo }) {
   const title = post?.title
   const category = post?.category
   return (
-        <div id='header' className="container m-auto mt-10 px-24 flex flex-col lg:flex-row space-x-10 h-96 justify-center items-center w-full relative">
-            <div className="flex flex-col space-y-10 leading-snug md:leading-snug shadow-text-md w-full lg:w-7/12">
-                <div className='w-full'>
+        <div id='header' className="container m-auto mt-10 px-24 flex flex-col lg:flex-row space-x-10 justify-center items-start w-full relative">
+            <div className="flex flex-col space-y-10 leading-snug md:leading-snug shadow-text-md w-full lg:w-96">
+                <div className='w-full h-full'>
                   {category
                     ? <Link
                     key={category}
@@ -32,8 +32,10 @@ export default function PostHeader({ post, siteInfo }) {
                   <span className='font-medium text-base text-[rgba(32,41,65,.5)]'>{post?.lastEditedDay}</span>
                 </div>
             </div>
-            <LazyImage alt={title} src={headerImage} className='rounded-xl pointer-events-none select-none w-full h-full object-cover'
-                placeholder='blur' blurDataURL='/bg_image.jpg' />
+            <div className='relative h-full'>
+              <LazyImage alt={title} src={headerImage} className='rounded-xl pointer-events-none select-none w-full h-full object-cover'
+                         placeholder='blur' blurDataURL='/bg_image.jpg' />
+            </div>
         </div>
   )
 }

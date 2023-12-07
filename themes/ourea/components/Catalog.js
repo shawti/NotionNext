@@ -77,7 +77,7 @@ const Catalog = ({ toc }) => {
             >
               <span className={`absolute z-20 -left-[17px] w-3 h-3 rounded-full bg-indigo-700 border-2 ${activeSection !== id && 'hidden'}`} />
               <span style={{ display: 'inline-block', marginLeft: tocItem.indentLevel * 16, fontSize: 18 - tocItem.indentLevel * 2 }}
-                className={`px-2 ${activeSection === id && ' font-bold text-indigo-600 overflow-ellipsis truncate'}`}
+                className={`px-2 break-words whitespace-break-spaces ${activeSection === id && ' font-bold text-indigo-600'}`}
               >
                 {tocItem.text}
               </span>

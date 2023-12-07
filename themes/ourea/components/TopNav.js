@@ -74,7 +74,7 @@ const TopNav = props => {
                   {/* 右侧功能 */}
                   <div className='grow flex justify-center items-center text-black space-x-12 font-michroma font-light'>
                     <span>Generate</span>
-                    <Link href='https://ourea.art/videoTrans'>Tools</Link>
+                    <Link href='https://ourea.art/video-trans'>Tools</Link>
                     <Link href='/'>Case</Link>
                     <span>Company</span>
                   </div>
