@@ -32,8 +32,8 @@ export default function PostHeader({ post, siteInfo }) {
                   <span className='font-medium text-base text-[rgba(32,41,65,.5)]'>{post?.lastEditedDay}</span>
                 </div>
             </div>
-            <div className='relative h-full'>
-              <LazyImage alt={title} src={headerImage} className='rounded-xl pointer-events-none select-none w-full h-full object-cover'
+            <div className='relative max-h-96 rounded-xl  overflow-hidden'>
+              <LazyImage alt={title} src={headerImage} className='pointer-events-none select-none w-full h-full object-cover'
                          placeholder='blur' blurDataURL='/bg_image.jpg' />
             </div>
         </div>
